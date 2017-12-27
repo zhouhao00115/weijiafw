@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>还款</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+</head>
+<body>
+
+    <div style="border-top: 1px solid #D9D9D9;text-align:center;border-bottom: 1px solid #D9D9D9;background-color:#FFFFFF">
+       <p style="font-size:13px;padding-top:10px">未还本金(元)</p>
+       <h1>{$cost}</h1>
+       <p style="font-size:10px;padding-bottom:10px">共<span>{$num}</span>笔借款未还清</p>         
+                    
+                
+    </div>
+    <div class="weui-cells">
+
+            <a class="weui-cell weui-cell_access" href="?s=index/protocol/zhifu&fq_id={$fq_id}" style="font-size:15px">
+                <div class="weui-cell__hd"></div>
+                <div class="weui-cell__bd">
+                    <p id="type">分期还款</p>
+                </div>
+                <div class="weui-cell__ft">本期应还<span style="color:red;font-weight:bold">{$monthpay}</span>元</div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="?s=index/protocol/tqzhifu&fq_id={$fq_id}&whcost={$cost}" style="font-size:15px">
+                <div class="weui-cell__hd"></div>
+                <div class="weui-cell__bd">
+                    <p>提前还款</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </a>
+        </div>
+        
+    <script src="__JS__/jquery.min.js"></script>
+    <script src="__JS__/func.js"></script>
+</body>
+</html>

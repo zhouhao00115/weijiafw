@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>分期详情</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <style>
+        .weui-cell_select-before .weui-cell__hd:after{
+                border-right: 0px;
+
+        }
+        .weui-cell_select-before .weui-cell__hd:before{
+            border-style: hidden;
+                width: 0px;
+                height:0px;
+
+        }
+        #cell:after{
+            border-bottom: 0px
+        }
+        #wo:after{
+            content: " ";
+            display: inline-block;
+            height: 6px;
+            width: 6px;
+            border-width: 2px 2px 0 0;
+            border-color: #C8C8CD;
+            border-style: solid;
+            -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            position: relative;
+            top: -2px;
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            margin-right: 15px;
+            right: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">装修费用:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="pay"  placeholder="请输入装修费用(单位:元)">
+                </div>
+    </div>
+    <div class="weui-cells__title">选择还款类型:</div>
+    <div class="weui-cells weui-cells_checkbox">
+            <label class="weui-cell weui-check__label" for="s11">
+                <div class="weui-cell__hd">
+                    <input type="radio" class="weui-check" name="checkbox1" id="s11" checked="checked" value="fenqi">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>分期月付</p>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s12">
+                <div class="weui-cell__hd">
+                    <input type="radio" name="checkbox1" class="weui-check" id="s12" value="dingqi">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>定期支付</p>
+                </div>
+            </label>
+            <!-- <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+                <div class="weui-cell__bd">添加更多</div>
+            </a> -->
+    </div>
+    <div class="weui-cells__title">分期内容:</div>
+    <div class="weui-cell weui-cell_select weui-cell_select-before" style="background-color:#FFFFFF;padding:0;padding-left:5vw">
+                <div class="weui-cell__hd">
+                    <select id="howlong" class="weui-select"  style="border-right:0px;width:300px;padding-left:0px">
+                        <option value="0">请选择分期时长</option>
+                        <option value="1">1个月免息</option>
+                        <option value="2">2个月</option>
+                        <option value="3">3个月</option>
+                        <option value="4">4个月</option>
+                        <option value="5">5个月</option>
+                        <option value="6">6个月</option>
+                        <option value="7">7个月</option>
+                        <option value="8">8个月</option>
+                        <option value="9">9个月</option>
+                        <option value="10">10个月</option>
+                        <option value="11">11个月</option>
+                        <option value="12">12个月</option>
+                        <option value="13">13个月</option>
+                        <option value="14">14个月</option>
+                        <option value="15">15个月</option>
+                        <option value="16">16个月</option>
+                        <option value="17">17个月</option>
+                        <option value="18">18个月</option>
+                        <option value="19">19个月</option>
+                        <option value="20">20个月</option>
+                        <option value="21">21个月</option>
+                        <option value="22">22个月</option>
+                        <option value="23">23个月</option>
+                        <option value="24">24个月</option>
+                    </select>
+                </div>
+                <div class="weui-cell__ft" id="wo">
+                </div>
+    </div>
+    <div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">需每月还款:</label></div>
+                <div class="weui-cell__bd">
+                    <a id="everyMonth"></a>
+                </div>
+    </div>
+    <div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">总利息:</label></div>
+                <div class="weui-cell__bd">
+                    <a id="totallx"></a>
+                </div>
+    </div>
+    <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__bd">
+                    <p style="font-size:13px">*可提前还款，利息按天计算,日利率万点2(1万元一天利息只需2元)</p>
+                </div>
+    
+    </a>
+    <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="confirm()">确认</a>
+            </p>
+    </div>
+
+
+    
+
+    <!--弹出提示信息-->
+    <div class="js_dialog" id="iosDialog1" style="opacity: 1;display:none">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
+                <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
+                </div>
+            </div>
+    </div>
+    <!-- 提示 -->
+    <div class="js_dialog" id="iosDialog2" style="opacity: 1;display:none">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__bd" id="dia2"></div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" onclick="know()">知道了</a>
+                </div>
+            </div>
+    </div>
+    <script type="text/javascript" src="__JS__/jquery.min.js"></script>
+    <script type="text/javascript" src="__JS__/func.js"></script>
+    <script type="text/javascript" src="__JS__/feiqiDetail.js"></script>
+    <script type="text/javascript">
+    // 知道了弹窗取消
+    function know(){
+        $('#iosDialog2').hide();
+    }
+    </script>
+</body>
+</html>

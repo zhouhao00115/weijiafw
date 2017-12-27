@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>定期还款</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+    <style>
+		#div2:before{
+			border:0px;
+		}
+		#div1:before{
+			left:0px;
+		}
+    </style>
+</head>
+<body>
+	<div style="margin-top:3%;margin-left:3%;margin-right:3%;background-color:#FFFFFF;line-height:50px">
+		<div><a>借款开始日期:<span style="color:red;float: right;">{$start_time}</span></a></div>
+        <div><a>承诺还款日期:<span style="color:red;float: right;" id="should">{$end_time}</span></a></div>
+        <div><a>装修金额:<span style="color:red;float: right;">{$cost}</span></a></div>
+        <div><a>总利息:<span style="color:red;float: right;">{$totallixi}</span></a></div>
+
+        <div><a>实际应还金额:<span style="color:red;float: right;" id="total">{$allPay}</span></a></div>
+
+
+		<!--&lt;!&ndash; 隐藏域分期id &ndash;&gt;-->
+		<input type="hidden" id="fq_id" value="{$fq_id}">
+		<!--&lt;!&ndash; openid隐藏域 &ndash;&gt;-->
+		<input type="hidden" id="openid" value="{$openid}">
+        <!--&lt;!&ndash; 是否是提前还款 &ndash;&gt;-->
+        <input type="hidden" id="tiqian" value="0">
+
+        <p style="font-size:12px;text-align:left;margin-left:1%;color:#D4D4D4">此金额用于支付您在维家的欠款，请在规定时间内还清，如需提前还款，请移步提前还款！</p>
+        
+		<a href="javascript:;" class="weui-btn weui-btn_primary" onclick="callpay()">确认</a>
+        <!--<a href="javascript:history.back();" class="weui-btn weui-btn_primary" style="background-color: #FFFFFF;color:black">返回上一页</a>-->
+	</div>
+
+	<div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link"></a>
+                </p>
+                <p class="weui-footer__text"> © 2008-2017 维家智能家居</p>
+            </div>
+        </div>
+
+</body>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="__JS__/func.js"></script>
+<script type="text/javascript" src="__JS__/zhifu_dq.js"></script>

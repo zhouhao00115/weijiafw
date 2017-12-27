@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b8ef55df-a3e3-4f10-bc92-45d409cd5887" name="weijia" url="http://47.94.4.174">
+        <fileTransfer host="47.94.4.174" port="22" rootFolder="/usr/local/nginx/html/weijiafw" accessType="SFTP" password="dfd0dfc2dfcbdfc5dfdadfc3dfc4dfeadf9bdf98df99" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

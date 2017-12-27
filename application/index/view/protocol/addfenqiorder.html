@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>借款详情</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="weui.css"/>
+    <link rel="stylesheet" type="text/css" href="example.css"/> -->
+    <style>
+        .weui-cell_select-before .weui-cell__hd:after{
+                border-right: 0px;
+
+        }
+        .weui-cell_select-before .weui-cell__hd:before{
+            border-style: hidden;
+                width: 0px;
+                height:0px;
+
+        }
+        #cell:after{
+            border-bottom: 0px
+        }
+        #wo:after{
+            content: " ";
+            display: inline-block;
+            height: 6px;
+            width: 6px;
+            border-width: 2px 2px 0 0;
+            border-color: #C8C8CD;
+            border-style: solid;
+            -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            position: relative;
+            top: -2px;
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            margin-right: 15px;
+            right: 2px;
+        }
+
+    </style>
+</head>
+<body>
+<form action="?s=index/user/insertKehufenqi" id="form" method="post" onsubmit=" return confirm()" enctype="multipart/form-data">
+<div class="weui-cells__title">请填写以下信息</div>
+<div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" id="name" name="name" type="text"  placeholder="请输入姓名">
+                </div>
+</div>
+<div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">手机</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" name="phone" id="phone"  placeholder="请输入手机号">
+                </div>
+</div>
+<div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">身份证</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" name="idcard" id="shenfen" placeholder="请输入身份证号">
+                </div>
+</div>
+<div class="weui-cells__title">选择店铺:</div>
+    <div class="weui-cell weui-cell_select weui-cell_select-before" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd">
+                    <select id="selectdp" name="dianpu" class="weui-select"  style="border-right:0px;width:300px;padding-left:0px">
+                        <option value="0">请选择店铺</option>
+                        <option value="1">维家武强店</option>
+                        <option value="2">维家深州店</option>
+                        <option value="3">华庭深州店</option>
+                        <option value="4">维家衡水店</option>
+                    </select>
+                </div>
+                <div class="weui-cell__ft" id="wo">
+                </div>
+    </div>
+<div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>请上传借款人的身份证正反面</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+</div>
+
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw;overflow:hidden">
+<img id="preview1">
+                <input onchange="imgPreview(this,1)" name="pic[]" id="upidcard1" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+
+
+</div>
+
+
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw;overflow:hidden">
+<img id="preview2">
+                <input onchange="imgPreview(this,2)" name="pic[]" id="upidcard2" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                
+
+</div>
+
+
+<div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>请上传借款人的户口本首页及本人页照片</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+</div>
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw;overflow:hidden">
+<img id="preview3">
+                <input onchange="imgPreview(this,3)" name="pic[]" id="upkou1" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+</div>
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw;overflow:hidden">
+<img id="preview4">
+                <input onchange="imgPreview(this,4)" name="pic[]" id="upkou2" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                
+
+</div>
+<div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>请上传共同还款人的身份证正反面</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+</div>
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw; overflow:hidden">
+<img id="preview5">
+                <input onchange="imgPreview(this,5)" name="pic[]" id="upgtid1" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+</div>
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw;overflow:hidden">
+<img id="preview6">
+                <input onchange="imgPreview(this,6)" name="pic[]" id="upgtid2" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                
+
+</div>
+<div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <p>请上传共同还款人的户口本首页及本人页照片</p>
+                </div>
+                <div class="weui-cell__ft"></div>
+</div>
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw;overflow:hidden">
+<img id="preview7">
+                <input onchange="imgPreview(this,7)" name="pic[]" id="gtup1" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+</div>
+<div class="weui-uploader__input-box" style="float:none;margin-left: 5vw;overflow:hidden">
+<img id="preview8">
+                <input onchange="imgPreview(this,8)" name="pic[]" id="gtup2" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                
+
+</div>
+<div class="weui-cell" style="margin-bottom: 20px;border-bottom:1px solid #D9D9D9;background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">手机</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" id="gtphone" name="gtphone"  placeholder="请输入共同还款人手机号">
+                </div>
+</div>
+<input type="hidden" name="openid" id="openid" value=''>
+<button class="weui-btn weui-btn_primary">提交</button>
+<!-- <input type="submit" value='调教'>   -->
+<!-- <a style="margin-bottom:10px" href="javascript:;" class="weui-btn weui-btn_primary" onclick="confirm()">确认</a> -->
+</form>
+<!--弹出提示信息-->
+<div class="js_dialog" id="iosDialog1" style="opacity: 1;display:none">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
+                <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="cancel">取消</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确认</a>
+                </div>
+            </div>
+</div>
+<!-- 提示 -->
+<div class="js_dialog" id="iosDialog2" style="opacity: 1;display:none">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__bd" id="dia2"></div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" onclick="know()">知道了</a>
+                </div>
+            </div>
+</div>
+<!-- 加载中 -->
+<div id="loadingToast" style="opacity: 1; display:none ;">
+<div class="weui-mask"></div>
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">数据提交中</p>
+        </div>
+</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/func.js"></script>
+<script type="text/javascript" src="__JS__/addfenqiOrder.js"></script>
+<script>
+$(function(){
+    var openid=localStorage.getItem('openid');
+    document.getElementById("openid").value=openid;
+
+})
+function know(){
+    $('#iosDialog2').hide();
+}
+// 上传图片
+function imgPreview(fileDom,num){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        // console.log(file);
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("preview"+num);
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file,'UTF-8');
+        //表单自动提交后台处理上传
+        // document.getElementById("form"+num).submit();
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>提前还款</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+   <!--  <link rel="stylesheet" type="text/css" href="example.css"/>
+    <link rel="stylesheet" type="text/css" href="weui.css"/> -->
+    <style>
+		#div2:before{
+			border:0px;
+		}
+		#div1:before{
+			left:0px;
+		}
+    </style>
+</head>
+<body>
+	<div style="margin-top:3%;margin-left:3%;margin-right:3%;background-color:#FFFFFF;text-align:center;line-height:50px">
+		<p>提前还款</p>
+		<div class="weui-cell" id="div1">
+                <div class="weui-cell__bd" >
+                   	<span style="font-size:17px;font-weight:normal">总金额：</span>
+					<span id="total" style="font-size:20px;font-weight:bold;">{$zonge}</span>
+					<span style="font-size:17px;font-weight:normal">元</span>
+                </div>
+                
+        </div>
+        <div class="weui-cell" id="div2">
+                <div class="weui-cell__bd">
+                    <span>本金：<span style="font-size:20px;font-weight:bold;">{$benjin}</span>元</span><span style="margin-left:8%">利息：<span style="font-size:20px;font-weight:bold;">{$lixi}</span>元</span>
+                </div>
+         
+        </div>
+		<!-- 隐藏域分期id -->
+		<input type="hidden" id="fq_id" value="{$fq_id}">
+		<!-- openid隐藏域 -->
+		<input type="hidden" id="openid" value="{$openid}">
+        <!-- 提前还款 -->
+        <input type="hidden" id='tiqian' value="1">
+
+		<p style="font-size:14px;text-align:left;margin-left:5%;color:#D4D4D4">此金额用于支付您在维家的欠款</p>
+
+		<a href="javascript:;" class="weui-btn weui-btn_primary" onclick="callpay()">确认</a><br>
+	</div>
+
+	<div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link"></a>
+                </p>
+                <p class="weui-footer__text"> © 2008-2017 维家智能家居</p>
+            </div>
+        </div>
+
+</body>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" src="__JS__/func.js"></script>
+<script type="text/javascript" src="__JS__/zhifu.js"></script>

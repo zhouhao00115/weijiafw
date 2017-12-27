@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>审核状态</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="example.css"/>
+    <link rel="stylesheet" type="text/css" href="weui.css"/> -->
+</head>
+<body>
+<!-- <div style="margin-top:40%">
+    <img style="height:50%;width:50%" src="__IMG__/shenhe.jpg"/><br><span>您的订单正在审核中,预计审核时间为三天!</span>
+    
+</div> -->
+<!-- 审核中 -->
+<div class="weui-msg" id="checking" style="display:none">
+        <div class="weui-msg__icon-area"><i class="weui-icon-waiting weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">审核中...</h2>
+            <p class="weui-msg__desc">您的订单正在审核中，预计审核时间为三天<a href="javascript:void(0);"></a></p>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a id="fanhui" href="?s=index/manage/manage" class="weui-btn weui-btn_primary">返回上一页</a>
+                <a href="javascript:;" onclick="logout()" class="weui-btn weui-btn_default">退出</a>
+            </p>
+        </div>
+        <div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link"></a>
+                </p>
+                <p class="weui-footer__text"> © 2008-2017 维家智能家居</p>
+            </div>
+        </div>
+</div>
+<!-- 审核失败 -->
+<div class="weui-msg" id="fail" style="display:none">
+        <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">审核失败</h2>
+            <p class="weui-msg__desc">您的装修协议审核出现问题，请及时修改<a href="javascript:void(0);"></a></p>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="?s=index/protocol/index" class="weui-btn weui-btn_primary">重新申请</a>
+               <!-- <a href="javascript:window.close();" class="weui-btn weui-btn_default">退出</a>-->
+            </p>
+        </div>
+        <div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link"></a>
+                </p>
+                <p class="weui-footer__text"> © 2008-2017 维家智能家居</p>
+            </div>
+        </div>
+</div>
+<!-- 审核成功 -->
+<div class="weui-msg" id="success" style="display:none">
+        <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">审核成功</h2>
+            <p class="weui-msg__desc">您的装修协议审核通过,感谢您的支持！<a href="javascript:void(0);"></a></p>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="javascript:history.back();" class="weui-btn weui-btn_primary">返回上一页</a>
+                <a href="javascript:;" onclick="logout()" class="weui-btn weui-btn_default">退出</a>
+                <a id="qianqu" href="?s=index/protocol/huankuanFirst"  class="weui-btn weui-btn_default">前去还款</a>
+            </p>
+        </div>
+        <div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link"></a>
+                </p>
+                <p class="weui-footer__text"> © 2008-2017 维家智能家居</p>
+            </div>
+        </div>
+</div>
+
+<!-- 未知错误 -->
+<div class="weui-msg" id="error" style="display:none">
+        <div class="weui-msg__icon-area"><i class="weui-icon-info weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">未知错误</h2>
+            <p class="weui-msg__desc">请联系管理员<a href="javascript:void(0);"></a></p>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="javascript:history.back();" class="weui-btn weui-btn_primary">返回上一页</a>
+                <a href="javascript:;" onclick="logout()" class="weui-btn weui-btn_default">退出</a>
+            </p>
+        </div>
+        <div class="weui-msg__extra-area">
+            <div class="weui-footer">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link"></a>
+                </p>
+                <p class="weui-footer__text"> © 2008-2017 维家智能家居</p>
+            </div>
+        </div>
+</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/func.js"></script>
+<script type="text/javascript">
+$(function(){
+	var status=getQueryString('status');
+	if(status==0){
+		$('#checking').fadeIn();
+		var openid=localStorage.getItem('openid');
+        var url=$('#fanhui').attr('href');
+        $('#fanhui').attr('href',url+'&openid='+openid);
+	}
+	else if(status==1){
+		$('#fail').fadeIn();
+	}
+	else if(status==2){
+		$('#success').fadeIn();
+        var openid=localStorage.getItem('openid');
+        var url=$('#qianqu').attr('href');
+        $('#qianqu').attr('href',url+'&openid='+openid);
+
+	}
+	else if(status==3){
+		$('#finish').fadeIn();
+	}else{
+		$('#error').fadeIn();
+	}
+})
+
+function logout(){
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        WeixinJSBridge.call('closeWindow');
+    } else {
+        window.close();
+    }
+}
+
+</script>
+</body>
+</html>

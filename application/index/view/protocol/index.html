@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<p lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>协议须知</title>
+    <link rel="stylesheet" href="__CSS__/protocol.css" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/tips.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+    <style>
+        .weui-cells_checkbox:before{
+            border-top:0px;
+        }
+    </style>
+</head>
+<body> 
+    <span class="xieyi"><a> 装修协议</a></span>
+    <div class="main">
+        <p style="text-indent: 2em; font-size: 0.9rem;">本协议为装修分期付款协议，请仔细阅读，上传所需资料，经审核通过后即时生效，生效后借款人需按签订的分期付款协议分期支付。分期付款方式如下:</p>
+            <p>一.分期付款方式:</p>
+          1.分期按月还款，即按照借款金额，分期数量，按月分期支付。利息按照本金一万元每日两元利息按月一并支付。<br/>
+          2.定期还款，即按照借款金额，约定还款时间，一次性支付。利息同样按照本金一万元日息两元一并支付。<br/>
+          3.分期后可提前还款，利息不变，还款完成后即自动终止本协议。<br/>
+        　<p>二.借款方的违约责任</p>
+        　　借款方不按协议约定还款的，贷款方有权收回全部贷款，对违约还款的部分，按本金一万每日利息五元的利率加收利息，直至借款方还款结束，若借款方恶意拒还借款，贷款方可将电子协议提交至人民法院申请强制执行，借款方需支付诉讼费用。<br/>
+          <p>本协议最终解释权归深州市维家装饰材料店所有。</p>
+    <div class="weui-cells weui-cells_checkbox">
+            <label class="weui-cell weui-check__label" for="check">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" class="weui-check" name="checkbox1" id="check" >
+                    <i class="weui-icon-checked" style="margin-left:0px"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>我同意以上协议</p>
+                </div>
+            </label>
+            
+    </div>
+    </div>
+<a href="javascript:;" onclick="confirm()" style="margin-bottom:10px" class="weui-btn weui-btn_primary">确认</a>
+
+<!--弹出提示信息-->
+<!-- 提示 -->
+    <div class="js_dialog" id="iosDialog2" style="opacity: 1;display:none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__bd" id="dia2">您还没有同意以上协议</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" onclick="know()">确定</a>
+                </div>
+            </div>
+    </div>
+
+<script src="__JS__/jquery.min.js"></script>
+<script src="__JS__/func.js"></script>
+<script src="__JS__/protocol.js"></script>
+<script>
+function know(){
+    $('#iosDialog2').fadeOut();
+}
+</script>
+</body>
+</html>

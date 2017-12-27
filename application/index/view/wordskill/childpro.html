@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>产品子类</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+</head>
+<body>
+    <div style="margin-top:5%">
+    <?php
+        if(!empty($list)){
+            foreach($list as $k=>$v){
+                echo '<a href="?s=index/wordskill/productdetail&d_id='.$v['d_id'].'&pid='.$p_id.'" class="weui-btn weui-btn_primary" style="width: 70%;">'.$v["name"].'</a>';
+            }
+
+        }
+    ?>
+        <p style="text-align:center;margin-top:20px">
+            <a href="javascript:;" onclick="add({$p_id})" class="weui-btn weui-btn_mini weui-btn_primary">增加</a>
+        </p>
+    </div>
+ 
+</body>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript">
+/*增加*/
+function add(pid){
+    location.href='?s=index/wordskill/productdetail&pid='+ pid;
+    // $('#iosDialog1').show();
+}
+/*/!*取消*!/
+function cancel(){
+    $('#iosDialog1').hide();
+}
+/!*确认*!/
+function queren(){
+    var leixing=$.trim($('#leixing').val());
+    if(leixing==''){
+        $('#dia2').html('装修的种类不能为空');
+        $('#iosDialog2').show();
+        return false;
+    }
+    $.post(
+        '?s=index/wordskill/chanpinhs',
+        {leixing:leixing},
+        function(data){
+            if(data==1){
+                $('#dia2').html('添加成功');
+                $('#iosDialog2').show();
+            }else{
+                $('#dia2').html('添加失败');
+                $('#iosDialog2').show();
+            }
+            
+        }
+
+    ) 
+}
+/!*知道了*!/
+function know(){
+    $('#iosDialog2').hide();
+    location.reload();
+}*/
+</script>
+</html>

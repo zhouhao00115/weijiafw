@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <title><?php echo $zid['zid']==1 ? '户型明细' : '产品明细'; ?></title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+
+
+    <style>
+        #tianjia:before{
+            border-top: 0px
+        }
+    </style>
+</head>
+<body>
+ <form action="?s=index/wordskill/insertProdetail" id="form" method="post" onsubmit=" return confirm()" enctype="multipart/form-data">
+    <div class="weui-cells__title"><?php echo $zid['zid']==1 ? '户型名称' : '产品名称'; ?></div>
+    <div class="weui-cells weui-cells_form" >
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><input name="pro_name" id="pro_name" class="weui-input" style="width:100%;font-size:15px" type="text"  placeholder="<?php echo $zid['zid']==1 ? '请输入户型名称' : '请输入产品名称'; ?>" value="<?php echo isset($list['name']) ? $list['name'] : ''; ?>"></div>
+        </div>
+    </div>
+
+     <div class="weui-cells__title"><?php echo $zid['zid']==1 ? '户型平米数' : '产品单价'; ?></div>
+     <div class="weui-cells weui-cells_form">
+         <div class="weui-cell">
+             <div class="weui-cell__bd"><input name="pro_price" id="pro_price" class="weui-input" style="width:60%;font-size:15px;" type="text"  placeholder="<?php echo $zid['zid']==1 ? '请输入户型平米数' : '请输入产品单价'; ?>" value="<?php echo isset($list['price']) ? $list['price'] : ''; ?>"></div>
+         </div>
+     </div>
+
+    <div class="weui-gallery" id="gallery">
+        <span class="weui-gallery__img" id="galleryImg"></span>
+    </div>
+        <!--<div class="weui-gallery__opr">
+            <a href="javascript:" rel="external nofollow" class="weui-gallery__del">
+                <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+            </a>
+        </div>-->
+
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <div class="weui-uploader">
+                    <div class="weui-uploader__hd">
+                        <p class="weui-uploader__title"><?php echo $zid['zid']==1 ? '平面图/户型图/效果图' : '图片上传'; ?></p>
+                    </div>
+                    <div class="weui-uploader__bd">
+                        <ul class="weui-uploader__files" id="uploaderFiles">
+                        <?php
+                            if(isset($imgArr) && !empty($imgArr)){
+                              foreach($imgArr as $k=>$v){
+                                    echo '<li class="weui-uploader__file" style="background-image:url(http://www.weijiazhuang.top/weijiafw/public/__UPS__/product/'.$v.')"></li>';
+                              }  
+                            }
+                    
+                        ?>
+                        </ul>
+                        <div class="weui-uploader__input-box">
+                            <input id="uploaderInput"  class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <?php
+     if($zid['zid'] != 1){
+          if(empty($list)){
+
+                echo ' <div class="weui-cells__title">产品相册1</div>
+         <div class="weui-cells weui-cells_form">
+             <div class="weui-cell">
+                 <div class="weui-cell__bd"><input name="pro_xc1" id="xc1" class="weui-input" style="width:100%;font-size:15px;" type="text"  placeholder="输入产品相册1的链接地址" value=""></div>
+             </div>
+         </div>';
+         }else{
+
+         echo ' <div class="weui-cells__title">产品相册1</div>
+         <div class="weui-cell"><a href="'.$list['imgurl1'].'">'.$list['imgurl1'].'</a></div>';
+         }
+     }
+
+
+     ?>
+
+
+     <?php
+     if($zid['zid'] != 1){
+         if(empty($list)){
+
+                echo ' <div class="weui-cells__title">产品相册2</div>
+         <div class="weui-cells weui-cells_form">
+             <div class="weui-cell">
+                 <div class="weui-cell__bd"><input name="pro_xc2" id="xc2" class="weui-input" style="width:100%;font-size:15px;" type="text"  placeholder="输入产品相册2的链接地址" value=""></div>
+             </div>
+         </div>';
+         }else{
+         echo '<div class="weui-cells__title">产品相册2</div>
+         <div class="weui-cell"><a href="'.$list['imgurl2'].'">'.$list['imgurl2'].'</a></div>';
+         }
+     }
+
+     ?>
+   <!--  <div class="weui-cells weui-cells_form">
+         <div class="weui-cell">
+             <div class="weui-cell__bd"><a><input name="pro_xc2" id="xc2" class="weui-input" style="width:100%;font-size:15px;" type="text"  placeholder="输入产品相册2的链接地址" value="<?php echo isset($list['imgurl2']) ? $list['imgurl2'] : ''; ?>"></a></div>
+         </div>
+     </div>-->
+
+
+
+     <div class="weui-cells__title"><?php echo $zid['zid']==1 ? '所需材料数量' : '产品特性'; ?></div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea name="pro_special" id="pro_special" class="weui-textarea" placeholder="<?php echo $zid['zid']==1 ? '请输入所需材料数量' : '请输入产品特性'; ?>" rows="5"><?php echo isset($list['special']) ? $list['special'] : ''; ?></textarea>
+            </div>
+        </div>
+    </div>
+     <div class="weui-cells__title"><?php echo $zid['zid']==1 ? '特殊事项' : '产品卖点'; ?></div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea name="pro_salepoint" id="pro_salepoint" class="weui-textarea" placeholder="<?php echo $zid['zid']==1 ? '请输入特殊事项' : '请输入产品卖点'; ?>" rows="5"><?php echo isset($list['salepoint']) ? $list['salepoint'] : ''; ?></textarea>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="pid" id="pid" value="">
+    <input type="hidden" name="did" id="did" value="<?php echo isset($list['d_id']) ? $list['d_id'] : ''; ?>">
+    <button style="margin-top:20px;width:75%;" class="weui-btn weui-btn_primary" onclick="confirm()"><?php echo isset($list['d_id']) ? '修改' : '添加'; ?></button>
+     </form>
+    <!-- 提示 -->
+    <div class="js_dialog" id="iosDialog2" style="opacity: 1;display:none">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd" id="dia2"></div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" onclick="know()">知道了</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<!--<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+<!--<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>-->
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/jquery-weui.js"></script>
+<script src="__JS__/jquery.mobile-1.4.5.min.js"></script>
+<!--<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+<script type="text/javascript" src="__JS__/func.js"></script>
+<script type="text/javascript">
+    //var formData = new FormData();
+    var pid = getQueryString('pid');
+    $("#pid").val(pid);
+
+    $(function(){
+
+
+
+        //允许上传的图片类型
+        var allowTypes = ['image/jpg','image/jpeg','image/png','image/gif'];
+        //1024kb 就是1m
+        //var maxSize = 2048 * 2048;
+        //图片最大宽度
+        var maxWidth = 10000;
+        //最大上传图片数量
+       // var maxCount = 6;
+        $("#uploaderInput").on("change",function(event){
+            var files = event.target.files;
+            //console.log(files);return false;
+            if(files.length === 0){
+                return;
+            }
+
+            for(var i = 0,len = files.length;i < len; i++){
+                var file = files[i];
+                var reader = new FileReader();
+
+                //如果类型不再允许的类型范围内
+             /*   if(allowTypes.indexOf(file.type) === -1){
+
+                    $.weui.alert({text:'该类型不允许上传'});
+                    continue;
+                }
+
+                if(file.size > maxSize){
+
+                    $.weui.alert({text:'图片太大，不允许上传'});
+                    continue;
+                }
+
+                if($('.weui-uploader__file').length >= maxCount){
+                    $.weui.alert({text:'最多只能上传' + maxCount + '张图片'});
+                    return;
+                }
+*/
+                reader.readAsDataURL(file);
+                reader.onload = function(e){
+                    //console.log(e);
+                    var img = new Image();
+                    img.src = e.target.result;
+                    img.onload = function(){
+                        //不要超过最大宽度
+                        var w = Math.min(maxWidth,img.width);
+                        //高度按比例计算
+                        var h = img.height * (w / img.width);
+                        var canvas = document.createElement('canvas');
+                        var ctx = canvas.getContext('2d');
+                        //设置canvas的宽度和高度
+                        canvas.width = w;
+                        canvas.height = h;
+                        ctx.drawImage(img,0,0,w,h);
+
+
+                        var base64 = canvas.toDataURL('image/jpeg',0.3);
+                        //console.log(base64);
+                        //插到预览区
+                        var $preview = $('<li class="weui-uploader__file weui-uploader__file_status" style="background-image: url(' + img.src +')"><div class="weui-uploader__file-content">0%</div></li>');
+                        $("#uploaderFiles").append($preview);
+                        var num = $('.weui-uploader__file').length;
+
+                        //console.log(num);
+
+                        var formData = new FormData();
+                        formData.append("images",base64);
+                       /* console.log(formData);
+                        return false;*/
+                        //console.log(img.src);
+
+
+                         $.ajax({
+                             url : "?s=index/wordskill/test",
+                             type : 'POST',
+                             data : formData,
+                             contentType : false,
+                             processData : false,
+                             success : function(data){
+                             $preview.removeClass('weui-uploader__file_status');
+                             //alert('上传成功');
+                             },
+                             error: function (xhr,type) {
+                             alert('Ajax error');
+                             }
+                         });
+
+
+
+                    };
+
+                };
+
+
+
+            }
+
+        });
+
+        var index; //第几张图片
+
+        $("#uploaderFiles").on("click", "li", function() {
+            index = $(this).index();
+            $("#galleryImg").attr("style", this.getAttribute("style"));
+            $("#gallery").css('display','initial');
+            //alert(index);
+
+        });
+        $("#galleryImg").on("click", function() {
+           // $("#galleryImg").fadeOut(100);
+            $("#gallery").css('display','none');
+        });
+
+
+        //向左滑动
+       $("#galleryImg").on("swipeleft",function(){
+
+           var style = this.getAttribute("style");
+          // console.log($('#uploaderFiles').find('li').length);
+           $('#uploaderFiles').find('li').each(function () {
+               //console.log(this.getAttribute("style"));
+               if(this.getAttribute("style") == style){
+                   //alert($(this).index());
+                   if($(this).index() == 0){
+                       alert('已经是第一张了');
+                       return;
+                   }else{
+                       $("#galleryImg").attr("style", $(this).prev().attr("style"));
+                   }
+
+               }
+           });
+
+        })
+
+        //向右滑动
+        $("#galleryImg").on("swiperight",function(){
+
+            var style = this.getAttribute("style");
+            var maxIndex = $('#uploaderFiles').find('li').length - 1;
+            // console.log($('#uploaderFiles').find('li').length);
+            $('#uploaderFiles').find('li').each(function () {
+                //console.log(this.getAttribute("style"));
+                if(this.getAttribute("style") == style){
+                    //alert($(this).index());
+                    if($(this).index() == maxIndex){
+                        alert('已经是最后一张了');
+                        return;
+                    }else{
+                        $("#galleryImg").attr("style", $(this).next().attr("style"));
+                    }
+
+                }
+            });
+        })
+
+    });
+
+
+    function confirm(){
+        var pro_name=$('#pro_name').val();
+        var pro_price=$('#pro_price').val();
+        var pro_special=$('#pro_special').val();
+        var pro_salepoint=$('#pro_salepoint').val();
+        var did = $("#did").val();
+       if(pro_name==' '){
+            $('#dia2').html('产品名称不能为空');
+            $('#iosDialog2').show();
+            return false;
+        }
+        if(pro_price==' '){
+            $('#dia2').html('请输入产品单价');
+            $('#iosDialog2').show();
+            return false;
+        }
+        if(pro_special==''){
+            $('#dia2').html('请输入产品特性');
+            $('#iosDialog2').show();
+            return false;
+        }
+        if(pro_salepoint==''){
+            $('#dia2').html('请输入产品卖点');
+            $('#iosDialog2').show();
+            return false;
+        }
+
+    /*    formData.append('pro_name',pro_name);
+         formData.append('pro_price',pro_price);
+         formData.append('pro_special',pro_special);
+         formData.append('pro_salepoint',pro_salepoint);
+         formData.append('did',did);
+
+        $.ajax({
+            url : "?s=index/wordskill/insertProdetail",
+            type : 'POST',
+            data : formData,
+            contentType : "application/json",
+            processData : false,
+            success : function(data){
+                //$('#uploaderFiles').removeClass('weui-uploader__file_status');
+                alert('上传成功');
+            },
+            error: function (xhr,type) {
+                alert('Ajax error');
+            }
+
+
+        });*/
+
+    }
+    function know(){
+        $('#iosDialog2').hide();
+    }
+</script>

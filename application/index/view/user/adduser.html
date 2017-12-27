@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>添加店员</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/weui.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/example.css"/>
+    <style>
+        .weui-cell_select-before .weui-cell__hd:after{
+                border-right: 0px;
+
+        }
+        .weui-cell_select-before .weui-cell__hd:before{
+            border-style: hidden;
+                width: 0px;
+                height:0px;
+
+        }
+        #cell:after{
+            border-bottom: 0px
+        }
+        #wo:after{
+            content: " ";
+            display: inline-block;
+            height: 6px;
+            width: 6px;
+            border-width: 2px 2px 0 0;
+            border-color: #C8C8CD;
+            border-style: solid;
+            -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            position: relative;
+            top: -2px;
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            margin-right: 15px;
+            right: 2px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">店员姓名:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="name"  placeholder="请输入店员姓名">
+                </div>
+    </div>
+    <div class="weui-cell" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd"><label class="weui-label">联系方式:</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" id="phone"  placeholder="请输入对应店员的手机号码">
+                </div>
+    </div>
+    <div class="weui-cells__title">选择职位:</div>
+    <div class="weui-cell weui-cell_select weui-cell_select-before" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd">
+                    <select id="selectzw" class="weui-select"  style="border-right:0px;width:300px;padding-left:0px">
+                        <option value="0">请选择职位</option>
+                        <option value="1">老板</option>
+                        <option value="2">监理管理</option>
+                        <option value="3">设计管理</option>
+                        <option value="4">销售管理</option>
+                        <option value="5">材料员</option>
+                        <option value="6">财务</option>
+                        <option value="7">预算员</option>
+                        <option value="8">工长</option>
+                        <option value="9">监理</option>
+                        <option value="10">设计师助理</option>
+                        <option value="11">设计师</option>
+                        <option value="12">销售</option>
+                        <option value="13">工长管理</option>
+                    </select>
+                </div>
+                <div class="weui-cell__ft" id="wo">
+                </div>
+    </div>
+    <div class="weui-cells__title">选择店铺:</div>
+    <div class="weui-cell weui-cell_select weui-cell_select-before" style="background-color:#FFFFFF">
+                <div class="weui-cell__hd">
+                    <select id="selectdp" class="weui-select"  style="border-right:0px;width:300px;padding-left:0px">
+                        <option value="0">请选择店铺</option>
+                        <option value="1">维家武强店</option>
+                        <option value="2">维家深州店</option>
+                        <option value="3">华庭深州店</option>
+                        <option value="4">维家衡水店</option>
+                    </select>
+                </div>
+                <div class="weui-cell__ft" id="wo">
+                </div>
+    </div>
+    <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="javascript:history.back();" class="weui-btn weui-btn_primary">确认</a>
+            </p>
+    </div>
+    
+    <!--弹出提示信息-->
+    <div class="js_dialog" id="iosDialog1" style="opacity: 1;display:none">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
+                <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
+                </div>
+            </div>
+    </div>
+    <script src="__JS__/jquery.min.js"></script>
+    <script src="__JS__/func.js"></script>
+    <script src="__JS__/adduser.js"></script>
+</body>
+</html>
